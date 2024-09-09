@@ -75,11 +75,12 @@ def verify_solution(C,Q):
         index += 1
     return best, best_index
 
-
 def get_sorted_for_profit(items):
 
     sorted_items = sorted(items, key=lambda x: x[0], reverse=True)
     return sorted_items
+
+
 def get_ratios_and_sorted(items):
 
     ratios = [(profit, weight, profit / weight) for profit, weight in items]
@@ -125,6 +126,21 @@ def maybe_smarter_solution_2(Q, items, timelimit):
             C.append(solution)
     return C
 
+def get_10_better(C):
+    better_solutions = []
+    profit_all_solutions = []
+    idx = 0
+    for s in C:
+        sum_profit = 0
+        for item in s:
+            sum_profit += item[0]
+        profit_all_solutions.append( ( idx, sum_profit) )
+        idx += 1
+    sorted_items = sorted(profit_all_solutions, key=lambda x: x[1], reverse=True)
+    for item in sorted_items[:10]:
+        better_solutions.append(C[ item[0] ])
+    return better_solutions
+
 if __name__ == '__main__':
     file_path = 'knapsack_data.txt'
     file_path = Path(file_path)
@@ -136,17 +152,20 @@ if __name__ == '__main__':
         print(f"Capacity (Q): {Q}")
         print(f"Items profit and weight: {items}")
         C = randomized_solution(N,Q,items, 1)
+        print(get_10_better(C))
         best_profit, index = verify_solution(C,Q)
         print(f"Best profit: {best_profit}")
         print(C[index])
 
         #Soluções deterministicas
         C = maybe_smarter_solution(Q, items, 1)
+        print(get_10_better(C))
         best_profit, index = verify_solution(C, Q)
         print(f"Best profit: {best_profit}")
         print(C[index])
 
         C = maybe_smarter_solution_2(Q, items, 1)
+        print(get_10_better(C))
         best_profit, index = verify_solution(C, Q)
         print(f"Best profit: {best_profit}")
         print(C[index])
