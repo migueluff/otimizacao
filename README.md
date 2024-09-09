@@ -1,5 +1,9 @@
-# Problema da mochila
+# Execicio Prático: Problema da mochila
 
+
+### Disciplina: Multiobjective Optimization
+#### Professor: Igor Machado Coelho
+#### Alunos: Douglas Brum e Miguel Freitas
 - Create a constructive heuristic function to build a random initial
 solution, given timelimit of t seconds (otherwise, just return an empty
 solution).
