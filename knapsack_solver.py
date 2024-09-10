@@ -80,7 +80,6 @@ def get_sorted_for_profit(items):
     sorted_items = sorted(items, key=lambda x: x[0], reverse=True)
     return sorted_items
 
-
 def get_ratios_and_sorted(items):
 
     ratios = [(profit, weight, profit / weight) for profit, weight in items]
@@ -137,10 +136,14 @@ def get_10_better(C):
         profit_all_solutions.append( ( idx, sum_profit) )
         idx += 1
     sorted_items = sorted(profit_all_solutions, key=lambda x: x[1], reverse=True)
-    for item in sorted_items[:10]:
-        better_solutions.append(C[ item[0] ])
-    return better_solutions
-
+    if( len(sorted_items) >= 10):
+        for item in sorted_items[:10]:
+            better_solutions.append(C[ item[0] ])
+        return better_solutions
+    else:
+        for item in sorted_items:
+            better_solutions.append(C[item[0]])
+        return better_solutions
 if __name__ == '__main__':
     file_path = 'knapsack_data.txt'
     file_path = Path(file_path)

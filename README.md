@@ -14,6 +14,7 @@ just return an empty solution).
 - Generate 10 different initial solutions and compare them. Which of the
 two constructive methods is better on average?
 
+
 Entrada:
 N 5
 
@@ -27,6 +28,9 @@ W(i)    1 2 3 7 8 10 5 3
 - Capacidade da mochila (Q);
 - Lista com ganhos dos itens (Pi);
 - Lista com pesos dos itens (Wi);
+
+
+Obs.: Os testes trabalham apenas com soluções viáveis.
 
 ## 1 Teste com solução aleatória
 Number of items (n): 8
